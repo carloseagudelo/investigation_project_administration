@@ -1,16 +1,19 @@
 pipeline {
   agent any
   stages {
-    stage('Stage 1') {
+    stage('Install dependencies') {
       steps {
-        echo "Hello Work step 1"
-        echo "Hello Work step 2"
+        sh "npm install"
       }
     }
-    stage('Stage 2') {
+    stage('Run unit test') {
       steps {
-        echo "Hello Work step 1"
-        echo "Hello Work step 2"
+        sh "npm test"
+      }
+    }
+    stage('Run deploy') {
+      steps {
+        echo "Aquí debería enviar a deploy"
       }
     }
   }
