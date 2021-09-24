@@ -1,9 +1,10 @@
 pipeline {
-  agent any
+  agent {
+    docker { image 'node:14-alpine' }
+  }
   stages {
     stage('Install dependencies') {
       steps {
-        sh "export PATH=$PATH:/home/jenkins/.jenkins/tools/jenkins.plugins.nodejs.tools.NodeJSInstallation/node_js/bin/"
         sh "npm install"
       }
     }
