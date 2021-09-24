@@ -1,5 +1,6 @@
 pipeline {
   agent any
+  tools {nodejs "nodejs"}
   stages {
     stage('Install dependencies') {
       steps {
@@ -13,7 +14,7 @@ pipeline {
     }
     stage('Run deploy') {
       steps {
-        echo "Aquí debería enviar a deploy with codepipeline"
+        echo "Aquí debería enviar a deploy with codepipeli code"
       }
     }
   }
