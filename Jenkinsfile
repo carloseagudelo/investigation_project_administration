@@ -14,7 +14,7 @@ pipeline {
     }
     stage('Run deploy') {
       steps {
-        echo "Aquí debería enviar a deploy"
+        echo "Aquí debería enviar a deploy with codepipeline"
       }
     }
   }
