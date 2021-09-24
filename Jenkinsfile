@@ -8,7 +8,7 @@ pipeline {
     }
     stage('Run unit test') {
       steps {
-        sh "npm test"
+        npm "test"
       }
     }
     stage('Run deploy') {
