@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Install dependencies') {
       steps {
-        sh "sudo apt install npm"
+        sh "export PATH=$PATH:/home/jenkins/.jenkins/tools/jenkins.plugins.nodejs.tools.NodeJSInstallation/node_js/bin/"
         sh "npm install"
       }
     }
