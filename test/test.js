@@ -16,34 +16,20 @@ describe('#userModel test their validations', function(){
       expect( err.errors.name ).to.exist;
       done();
     })
-  })
+  });
 
   it('Should be a invalid validation ', function( done ){
     var user2 = new User({
       name: 'Juan Jaramillo',
       email: 'prueba@prueba.com',
       password: '123456789',
-      age: 15
+      age: 20
     })
 
     user2.validate(function(err){
       expect( err.errors.age ).to.exist;
       done();
     })
-  })
-
-  it('Should be a invalid validation xxx', function( done ){
-    var user2 = new User({
-      name: 'Juan Jaramillo',
-      email: 'prueba@prueba.com',
-      password: '123456789',
-      age: 15
-    })
-
-    user2.validate(function(err){
-      expect( err.errors.age ).to.exist;
-      done();
-    })
-  })
+  });
 
 })
