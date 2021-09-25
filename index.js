@@ -29,7 +29,7 @@ connection.once('open', () => {
 })
 
 // Import and user routes
-const userRoutes = require('./controllers/user.controller')
+const userRoutes = require('./src/controllers/user.controller')
 app.use('/users', userRoutes)
 
 app.listen(PORT, ()=>{
