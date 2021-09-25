@@ -30,7 +30,11 @@ connection.once('open', () => {
 
 // Import and user routes
 const userRoutes = require('./src/controllers/user.controller')
-//TODO: define root path
+
+
+app.get('/', async (req, res) => {
+  res.status(200).json("App is up!")
+})
 
 app.use('/users', userRoutes)
 
