@@ -23,7 +23,7 @@ describe('#userModel test their validations', function(){
       name: 'Juan Jaramillo',
       email: 'prueba@prueba.com',
       password: '123456789',
-      age: 20
+      age: 15
     })
 
     user2.validate(function(err){
