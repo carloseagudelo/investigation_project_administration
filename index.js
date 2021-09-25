@@ -25,7 +25,7 @@ mongoose.connect(source, {
 })
 const connection = mongoose.connection
 connection.once('open', () => {
-  console.log("DB connected.");
+  console.log("DB connected");
 })
 
 // Import and user routes
