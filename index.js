@@ -19,7 +19,6 @@ const source = process.env.ATLAS_CONNECTION
 const PORT = process.env.PORT || 5000
 
 // establish connection & give yourself a message so you know when its complete
-/*
 mongoose.connect(source, {
   useNewUrlParser: true,
   useUnifiedTopology: true
@@ -28,17 +27,16 @@ const connection = mongoose.connection
 connection.once('open', () => {
   console.log("DB connected.");
 })
-*/
 
 // Import and user routes
-// const userRoutes = require('./src/controllers/user.controller')
+const userRoutes = require('./src/controllers/user.controller')
 
 // Set route path on project
 app.get('/', async (req, res) => {
   res.status(200).json("App is up!")
 })
 
-// app.use('/users', userRoutes)
+app.use('/users', userRoutes)
 
 app.listen(PORT, ()=>{
     console.log(`Successfully served on port: ${PORT}.`);
