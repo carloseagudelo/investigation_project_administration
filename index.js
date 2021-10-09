@@ -1,6 +1,10 @@
 // establish an express app
 const express = require('express')
-const app = express()
+// Calling graphql server
+const graphqlHTTP = require('express-graphql').graphqlHTTP; // -> new
+const app = express();
+
+const expressPlayground = require('graphql-playground-middleware-express').default;
 
 // allow requests from outside resources like postman, or your frontend if you choose to build that out
 const cors = require('cors')
@@ -18,7 +22,7 @@ require('dotenv').config()
 const source = process.env.ATLAS_CONNECTION
 const PORT = process.env.PORT || 5000
 
-// establish connection & give yourself a message so you know when its complete
+// Establish connection & give yourself a message so you know when its complete
 mongoose.connect(source, {
   useNewUrlParser: true,
   useUnifiedTopology: true
@@ -26,18 +30,32 @@ mongoose.connect(source, {
 const connection = mongoose.connection
 connection.once('open', () => {
   console.log("DB connected");
-})
+});
 
-// Import and user routes
-const userRoutes = require('./src/controllers/user.controller')
+/*
+app.use("/graphiql",
+  graphqlHTTP({
+    schema: require('./src/graphql/schema.js'), 
+    graphiql: true,
+  })
+);
+*/
 
-// Set route path on project
-app.get('/', async (req, res) => {
-  res.status(200).json("App is running rigth now!")
-})
+// GraphQl route
+app.use('/graphiql', 
+  cors(),
+  graphqlHTTP(async (req) => ({
+    schema: require('./src/graphql/schema.js'), 
+    graphiql: true,
+    context: {
+      token: req.headers.authorization
+    }
+  }))
+);
 
-app.use('/users', userRoutes)
+app.get('/playground', expressPlayground({ endpoint: '/graphiql' }));
 
+// Open server and console print message
 app.listen(PORT, ()=>{
-    console.log(`Successfully served on port: ${PORT}.`);
+  console.log(`Successfully served on port: ${PORT}.`);
 })
