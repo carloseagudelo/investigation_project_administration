@@ -4,6 +4,9 @@ const { GraphQLObjectType, GraphQLString } = graphql;
 const UserType = require("./user_type");
 const ProjectType = require("./project_type");
 
+const User = require("../../models/user.model");
+const Project = require("../../models/project.model");
+
 const ContributionType = new GraphQLObjectType({
   name: 'contribution',
   fields: () => ({

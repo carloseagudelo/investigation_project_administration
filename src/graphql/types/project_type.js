@@ -2,6 +2,7 @@ const graphql = require('graphql');
 const { GraphQLObjectType, GraphQLString, GraphQLID } = graphql;
 
 const UserType = require("./user_type");
+const User = require("../../models/user.model"); 
 
 const ProjectType = new GraphQLObjectType({
   name: 'project',
